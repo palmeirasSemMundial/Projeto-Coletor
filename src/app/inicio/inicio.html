@@ -1,0 +1,31 @@
+<!-- Página de início com estatísticas do álbum de figurinhas. -->
+<div class="container mt-4">
+  <div class="text-center mb-5">
+    <h1>Sistema de Controle do Álbum de Figurinhas da Copa</h1>
+    <div class="progress mt-3" style="height: 30px;">
+      <div class="progress-bar bg-success"
+           [style.width.%]="percentualCompleto"
+           role="progressbar">
+        {{ percentualCompleto | number:'1.0-0' }}%
+      </div>
+    </div>
+    <p class="mt-2">Você possui {{ totalDistintas }} de {{ totalCatalogo }} figurinhas distintas.</p>
+  </div>
+
+
+  <!-- Tabela de estatisticas por tipo. -->
+  <h3>Estatísticas por tipo</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr><th>Tipo</th><th>Total existente</th><th>Total obtido</th><th>%</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tipo of estatisticasPorTipo">
+        <td>{{ tipo.tipo | uppercase }}</td>
+        <td>{{ tipo.total }}</td>
+        <td>{{ tipo.obtido }}</td>
+        <td>{{ tipo.percentual | number:'1.0-0' }}%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
